@@ -20,7 +20,7 @@ public class Conexao {
 
     public static Connection conectar() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost/guia", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/teste", "root", "bfcont@7890");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }

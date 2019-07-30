@@ -32,12 +32,12 @@ public class PdfDarfDAO {
         try {
             String sql = "SELECT * FROM `pdf_darf` "
                     + "where apuracaoDarf = ? "
-                    + "and inscricaoDarf = ? "
+                    + "and cnpjDarf = ? "
                     + "and receitaDarf = ? "
                     + "and valorTotalDarf = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, p.getApuracaoDarf());
-            ps.setString(2, p.getInscricaoDarf());
+            ps.setString(2, p.getCnpjDarf());
             ps.setString(3, p.getReceitaDarf());
             ps.setString(4, p.getValorTotalDarf());
             ResultSet rs = ps.executeQuery();
@@ -55,7 +55,7 @@ public class PdfDarfDAO {
 
                 int idDarf = rs.getInt("idDarf");
                 String apuracaoDarf = rs.getString("apuracaoDarf");
-                String inscricaoDarf = rs.getString("inscricaoDarf");
+                String cnpjDarf = rs.getString("cnpjDarf");
                 String receitaDarf = rs.getString("receitaDarf");
                 String vencimentoDarf = rs.getString("vencimentoDarf");
                 String valorPrincDarf = rs.getString("valorPrincDarf");
@@ -66,7 +66,7 @@ public class PdfDarfDAO {
                 PdfDarf p = new PdfDarf();
                 p.setIdDarf(idDarf);
                 p.setApuracaoDarf(apuracaoDarf);
-                p.setInscricaoDarf(inscricaoDarf);
+                p.setCnpjDarf(cnpjDarf);
                 p.setReceitaDarf(receitaDarf);
                 p.setVencimentoDarf(vencimentoDarf);
                 p.setValorPrincDarf(valorPrincDarf);
@@ -88,13 +88,13 @@ public class PdfDarfDAO {
     public boolean inserirPdfDARF(PdfDarf pdfdarf) {
         boolean itsOK = false;
         try {
-            String sql = "insert into pdf_darf ( apuracaoDarf, inscricaoDarf, "
+            String sql = "insert into pdf_darf ( apuracaoDarf, cnpjDarf, "
                     + "receitaDarf, vencimentoDarf,valorPrincDarf,valorMultaDarf,"
                     + "valorJurosDarf,valorTotalDarf) "
                     + "values (?, ?, ?, ?,?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, pdfdarf.getApuracaoDarf());
-            ps.setString(2, pdfdarf.getInscricaoDarf());
+            ps.setString(2, pdfdarf.getCnpjDarf());
             ps.setString(3, pdfdarf.getReceitaDarf());
             ps.setString(4, pdfdarf.getVencimentoDarf());
             ps.setString(5, pdfdarf.getValorPrincDarf());

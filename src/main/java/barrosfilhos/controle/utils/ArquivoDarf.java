@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ArquivoDarf {
 
-    private static final String PASTADARF = "J:\\TesteJava\\OneDrive-2019-07-26";
+    private static final String PASTADARF = "D:\\Allan\\Darfs";
     public static final List<String> PATHSFOLDERS = new ArrayList<>();
 
     public static void createFolder() {

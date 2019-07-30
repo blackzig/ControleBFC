@@ -30,7 +30,7 @@ public class ProcessarDarf {
          */
         PdfDarf p = new PdfDarf();
         p.setApuracaoDarf(conteudoPDF.get(30));
-        p.setInscricaoDarf(conteudoPDF.get(31));
+        p.setCnpjDarf(conteudoPDF.get(31));
         p.setReceitaDarf(conteudoPDF.get(32));
         p.setVencimentoDarf(conteudoPDF.get(33));
         p.setValorPrincDarf(conteudoPDF.get(34));
@@ -75,7 +75,7 @@ public class ProcessarDarf {
     private static void pdfDarfSicalc12(List<String> conteudoPDF) {
        PdfDarf p = new PdfDarf();
         p.setApuracaoDarf(conteudoPDF.get(30));
-       p.setInscricaoDarf(conteudoPDF.get(31));
+       p.setCnpjDarf(conteudoPDF.get(31));
        p.setReceitaDarf(conteudoPDF.get(32));
         p.setVencimentoDarf(conteudoPDF.get(33));
        p.setValorPrincDarf(conteudoPDF.get(34));
@@ -95,7 +95,7 @@ public class ProcessarDarf {
     private static void pdfDarfSicalc13(List<String> conteudoPDF) {
        PdfDarf p = new PdfDarf();
        p.setApuracaoDarf(conteudoPDF.get(30));
-       p.setInscricaoDarf(conteudoPDF.get(31));
+       p.setCnpjDarf(conteudoPDF.get(31));
         p.setReceitaDarf(conteudoPDF.get(32));
        p.setVencimentoDarf(conteudoPDF.get(33));
        p.setValorPrincDarf(conteudoPDF.get(34));

@@ -15,7 +15,7 @@ public class PdfDarf {
     private int idDarf;
     private String compararLinha;
     private String apuracaoDarf;
-    private String inscricaoDarf;
+    private String cnpjDarf;
     private String receitaDarf;
     private String vencimentoDarf;
     private String valorPrincDarf;
@@ -47,13 +47,15 @@ public class PdfDarf {
         this.apuracaoDarf = apuracaoDarf;
     }
 
-    public String getInscricaoDarf() {
-        return inscricaoDarf;
+    public String getCnpjDarf() {
+        return cnpjDarf;
     }
 
-    public void setInscricaoDarf(String inscricaoDarf) {
-        this.inscricaoDarf = inscricaoDarf;
+    public void setCnpjDarf(String cnpjDarf) {
+        this.cnpjDarf = cnpjDarf;
     }
+
+   
 
     public String getReceitaDarf() {
         return receitaDarf;
