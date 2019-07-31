@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>barrosfilhos.controle</groupId>
+  <artifactId>ControleBFC</artifactId>
+  <name>ControleBFC</name>
+  <version>1.0-SNAPSHOT</version>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer>
+                  <mainClass>barrosfilhos.controle.process.Start</mainClass>
+                </transformer>
+                <transformer>
+                  <resource>jasperreports_extension.properties</resource>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.github.wvengen</groupId>
+        <artifactId>proguard-maven-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>proguard</goal>
+            </goals>
+            <configuration>
+              <injar>ControleBFC-1.0-SNAPSHOT.jar</injar>
+              <proguardVersion>6.1.1</proguardVersion>
+              <options>
+                <option>-allowaccessmodification</option>
+                <option>-dontoptimize</option>
+                <option>-dontshrink</option>
+                <option>-dontnote</option>
+                <option>-dontwarn</option>
+                <option>-keepattributes Signature</option>
+                <option>-keep class barrosfilhos.controle.process.Start { *; }</option>
+                <option>-keep class mysql.mysql-connector-java.** {*;}</option>
+                <option>-keep class com.mysql.jdbc.** {*;}</option>
+              </options>
+              <libs>
+                <lib>${java.home}/lib/rt.jar</lib>
+              </libs>
+              <dependencies>
+                <dependency>
+                  <groupId>net.sf.proguard</groupId>
+                  <artifactId>proguard-base</artifactId>
+                  <version>6.1.1</version>
+                  <scope>runtime</scope>
+                </dependency>
+              </dependencies>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+</project>
