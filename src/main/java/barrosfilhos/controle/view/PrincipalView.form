@@ -29,7 +29,9 @@
               <Component id="VerificarDarfs" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="VerificarFgts" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="168" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="VerificarDae" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,6 +42,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="VerificarDarfs" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="VerificarFgts" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="VerificarDae" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="174" max="32767" attributes="0"/>
           </Group>
@@ -61,6 +64,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerificarFgtsActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="VerificarDae">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Verificar Dae"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerificarDaeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
