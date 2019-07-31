@@ -5,8 +5,9 @@
  */
 package barrosfilhos.controle.utils;
 
-import barrosfilhos.controle.process.ProcessarDarf;
+
 import barrosfilhos.controle.model.PdfDarf;
+import barrosfilhos.controle.process.ProcessarDarf;
 import static barrosfilhos.controle.utils.ArquivoDarf.PATHSFOLDERS;
 
 import java.io.File;
@@ -23,11 +24,12 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
  */
 public class PDFDARF {
 
-    public static List<PdfDarf> LerDarfs() {
-        List<PdfDarf> lista = new ArrayList<>();
+    public static List<PdfDarf> LerDarfs() throws IOException {
+ List<PdfDarf> lista = new ArrayList<>();
         try {
+            List<File> listFiles = null;
             for (String pasta : PATHSFOLDERS) {
-                List<File> listFiles = ArquivoDarf.justPDFFiles(pasta);
+                listFiles = ArquivoDarf.justPDFFiles(pasta);
 
                 for (File f : listFiles) {
                     PDDocument document = PDDocument.load(f);
@@ -57,15 +59,23 @@ public class PDFDARF {
                         i--;
                         if (i == 82) {
                             System.out.println("82");
-                            ProcessarDarf.pdfDarfDominio82(conteudoPDF);
+                            boolean itsOK = ProcessarDarf.pdfDarfDominio82(conteudoPDF);
+                            document.close();
+                            if (itsOK) {
+                                ArquivoDarf.moveFile(f);
+                            }
                         } else if (i == 70) {
-                            ProcessarDarf.pdfDarfSicalc(conteudoPDF);
+                          boolean itsOK = ProcessarDarf.pdfDarfSicalc(conteudoPDF);
+                          document.close();
+                          if(itsOK) {
+                              ArquivoDarf.moveFile(f);
+                          }
                         }
                     }
-                    document.close();
                     System.out.println("-----------------------------------");
                 }
             }
+            // Arquivo.moveFile(listFiles);
         } catch (IOException e) {
             System.out.println("ERRO readRows " + e.getMessage());
         }

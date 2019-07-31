@@ -20,13 +20,13 @@ import java.util.List;
  */
 public class ArquivoDarf {
 
-    private static final String PASTADARF = "D:\\Allan\\Darfs";
+    private static final String PASTADARF = "C:\\Verificar Obrigações\\DARF";
     public static final List<String> PATHSFOLDERS = new ArrayList<>();
 
     public static void createFolder() {
         PATHSFOLDERS.add(PASTADARF);
         for (String pasta : PATHSFOLDERS) {
-            File file = new File(pasta + "\\DarfVerificados");
+            File file = new File(pasta + "\\DARFVerificados");
             if (!file.exists()) {
                 if (file.mkdir()) {
                     System.out.println("Pasta Criada!");
@@ -87,35 +87,29 @@ public class ArquivoDarf {
         return listFilesPDF;
     }
 
-    public static void moveFile(File file) {
-
-        File arquivo = new File(PASTADARF + file.getName());
-        //File arquivo = new File(PASTADARF + "\\DARF IRRF 0561 - DOMÍNIO.pdf");
+      public static void moveFile(File file) {
+        File arquivo = new File(PASTADARF + "\\" + file.getName());
+        System.out.println("arquivo " + arquivo);
         // diretorio de destino
-
-        File dir = new File(PASTADARF + "\\ArquivosScaneados\\");
-
+        File dir = new File(PASTADARF + "\\DARFVerificados\\");
         // move o arquivo para o novo diretorio
-        boolean ok = arquivo.renameTo(new File(dir, arquivo.getName().concat("OK")));
+        boolean ok = arquivo.renameTo(new File(dir + "\\" + arquivo.getName()));
         if (ok) {
             System.out.println("Arquivo foi movido com sucesso");
         } else {
             System.out.println("Nao foi possivel mover o arquivo");
             arquivo.renameTo(new File(dir, arquivo.getName().concat("Erro")));
         }
-
     }
 
     public static void moveFile(List<File> listaPDFS) {
         for (File f : listaPDFS) {
-            File arquivo = new File(PASTADARF + f.getName());
-            //File arquivo = new File(PASTADARF + "\\DARF IRRF 0561 - DOMÍNIO.pdf");
+            File arquivo = new File(PASTADARF + "\\" + f.getName());
+            System.out.println("arquivo " + arquivo);
             // diretorio de destino
-
-            File dir = new File(PASTADARF + "\\ArquivosScaneados\\");
-
+            File dir = new File(PASTADARF + "\\DARFVerificados\\");
             // move o arquivo para o novo diretorio
-            boolean ok = arquivo.renameTo(new File(dir, arquivo.getName().concat("OK")));
+            boolean ok = arquivo.renameTo(new File(dir + "\\" + arquivo.getName()));
             if (ok) {
                 System.out.println("Arquivo foi movido com sucesso");
             } else {

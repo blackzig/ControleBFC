@@ -7,6 +7,11 @@ package barrosfilhos.controle.view;
 
 import barrosfilhos.controle.utils.ArquivoDarf;
 import barrosfilhos.controle.utils.PDFDARF;
+import barrosfilhos.controle.utils.ArquivoFgts;
+import barrosfilhos.controle.utils.PDFFGTS;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +37,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         VerificarDarfs = new javax.swing.JButton();
+        VerificarFgts = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guias");
@@ -43,6 +49,13 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
 
+        VerificarFgts.setText("Verificar Fgts");
+        VerificarFgts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerificarFgtsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -50,13 +63,17 @@ public class PrincipalView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(VerificarDarfs)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(VerificarFgts)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addComponent(VerificarDarfs)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VerificarDarfs)
+                    .addComponent(VerificarFgts))
                 .addContainerGap(174, Short.MAX_VALUE))
         );
 
@@ -67,10 +84,25 @@ public class PrincipalView extends javax.swing.JFrame {
     private void VerificarDarfsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarDarfsActionPerformed
         JOptionPane.showMessageDialog(null,"Realizar Leitura de Darfs");
         ArquivoDarf.createFolder();
-        PDFDARF.LerDarfs();
+        try {
+            PDFDARF.LerDarfs();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         JOptionPane.showMessageDialog(null,"Darfs Lido com Sucesso!");
         
     }//GEN-LAST:event_VerificarDarfsActionPerformed
+
+    private void VerificarFgtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarFgtsActionPerformed
+         JOptionPane.showMessageDialog(null,"Realizar Leitura de FGTS");
+        ArquivoFgts.createFolder();
+        try {
+            PDFFGTS.LerFGTSs();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null,"FGTS Lido com Sucesso!");
+    }//GEN-LAST:event_VerificarFgtsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,5 +141,6 @@ public class PrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton VerificarDarfs;
+    private javax.swing.JButton VerificarFgts;
     // End of variables declaration//GEN-END:variables
 }
