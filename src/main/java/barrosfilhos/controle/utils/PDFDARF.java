@@ -70,6 +70,12 @@ public class PDFDARF {
                           if(itsOK) {
                               ArquivoDarf.moveFile(f);
                           }
+                        }else if (i == 68) {
+                          boolean itsOK = ProcessarDarf.pdfDarfComCod68(conteudoPDF);
+                          document.close();
+                          if(itsOK) {
+                              ArquivoDarf.moveFile(f);
+                          }
                         }
                     }
                     System.out.println("-----------------------------------");

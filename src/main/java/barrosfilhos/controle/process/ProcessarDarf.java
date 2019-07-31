@@ -116,6 +116,41 @@ public class ProcessarDarf {
             return itsOK;
         }
     }
+    public static boolean pdfDarfComCod68(List<String> conteudoPDF) {
+        /*
+        linhas para ler
+        Nome da documentação    12
+        Apuracao_Darf           2
+        Inscricao_Darf          3
+        Receita_Darf            4
+        Vencimento_Darf         5
+        ValorPrinc_Darf         6
+        ValorMulta_Darf         7
+        ValorJuros_Darf         8
+        ValorTotal_Darf         9
+         */
+        PdfDarf p = new PdfDarf();
+        p.setCompararLinha(conteudoPDF.get(12));
+        if (p.getCompararLinha().contains("Documento de Arrecadação de Receitas Federais"))
+        p.setApuracaoDarf(conteudoPDF.get(2));
+        p.setCnpjDarf(conteudoPDF.get(3));
+        p.setReceitaDarf(conteudoPDF.get(4));
+        p.setVencimentoDarf(conteudoPDF.get(5));
+        p.setValorPrincDarf(conteudoPDF.get(6));
+        p.setValorMultaDarf(conteudoPDF.get(7));
+        p.setValorJurosDarf(conteudoPDF.get(8));
+        p.setValorTotalDarf(conteudoPDF.get(9));
+
+        boolean itsOK = verificarTabelaPdfDarf(p);
+
+        if (itsOK) {
+            PdfDarfDAO dao = new PdfDarfDAO();
+            dao.inserirPdfDARF(p);
+        } else {
+            System.out.println("Já tem.");
+        }
+        return itsOK;
+    }
 
     private static boolean verificarTabelaPdfDarf(PdfDarf p) {
         boolean itsOK = false;
