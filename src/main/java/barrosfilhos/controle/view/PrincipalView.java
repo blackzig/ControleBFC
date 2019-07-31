@@ -10,7 +10,9 @@ import barrosfilhos.controle.utils.PDFDAE;
 import barrosfilhos.controle.utils.ArquivoDarf;
 import barrosfilhos.controle.utils.PDFDARF;
 import barrosfilhos.controle.utils.ArquivoFgts;
+import barrosfilhos.controle.utils.ArquivoGps;
 import barrosfilhos.controle.utils.PDFFGTS;
+import barrosfilhos.controle.utils.PDFGPS;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +43,7 @@ public class PrincipalView extends javax.swing.JFrame {
         VerificarDarfs = new javax.swing.JButton();
         VerificarFgts = new javax.swing.JButton();
         VerificarDae = new javax.swing.JButton();
+        VerificarGps = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guias");
@@ -66,29 +69,46 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
 
+        VerificarGps.setText("Verificar Gps");
+        VerificarGps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerificarGpsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(VerificarDarfs)
-                .addGap(18, 18, 18)
-                .addComponent(VerificarFgts)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(VerificarDae)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(VerificarDarfs)
+                    .addComponent(VerificarGps))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(VerificarDae)
+                    .addComponent(VerificarFgts))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addGap(190, 190, 190)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(VerificarDarfs)
-                    .addComponent(VerificarFgts)
                     .addComponent(VerificarDae))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VerificarFgts)
+                    .addComponent(VerificarGps))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {VerificarDae, VerificarDarfs, VerificarFgts});
 
         pack();
         setLocationRelativeTo(null);
@@ -129,6 +149,17 @@ public class PrincipalView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"DAE Lido com Sucesso!");
     }//GEN-LAST:event_VerificarDaeActionPerformed
 
+    private void VerificarGpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarGpsActionPerformed
+      JOptionPane.showMessageDialog(null,"Realizar Leitura de GPS");
+        ArquivoGps.createFolder();
+        try {
+            PDFGPS.LerGps();
+        } catch (IOException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null,"GPS Lido com Sucesso!");
+    }//GEN-LAST:event_VerificarGpsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -168,5 +199,6 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton VerificarDae;
     private javax.swing.JButton VerificarDarfs;
     private javax.swing.JButton VerificarFgts;
+    private javax.swing.JButton VerificarGps;
     // End of variables declaration//GEN-END:variables
 }

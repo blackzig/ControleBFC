@@ -24,27 +24,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="VerificarDarfs" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="VerificarFgts" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="VerificarDae" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="VerificarDarfs" linkSize="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="VerificarGps" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="VerificarDae" linkSize="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="VerificarFgts" linkSize="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="VerificarDarfs" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="VerificarFgts" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="VerificarDae" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="VerificarDarfs" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="VerificarDae" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="174" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="VerificarFgts" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="VerificarGps" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,6 +80,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerificarDaeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="VerificarGps">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Verificar Gps"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerificarGpsActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
